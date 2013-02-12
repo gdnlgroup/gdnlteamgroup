@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Mohit Aneja <mohit@medialabs.co>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. Text in echo
+#: nc-coming-soon-pages-free/framework/framework.php:944
+msgid "Are you sure? This will remove all saved settings."
+msgstr ""
+
+#. Text in echo
+#: nc-coming-soon-pages-free/framework/framework.php:926
+#: nc-coming-soon-pages-free/framework/framework.php:950
+msgid "Cancel"
+msgstr ""
+
+#. Text in function
+#: nc-coming-soon-pages-free/framework/framework.php:918
+msgid "Click Re-Install to activate this %s or <a href=\"%s\" title=\"\">deactivate</a>."
+msgstr ""
+
+#. Text in echo
+#: nc-coming-soon-pages-free/framework/framework.php:560
+#: nc-coming-soon-pages-free/framework/framework.php:611
+#: nc-coming-soon-pages-free/framework/framework.php:719
+msgid "None"
+msgstr ""
+
+#. Text in echo
+#: nc-coming-soon-pages-free/framework/framework.php:692
+msgid "Please Select"
+msgstr ""
+
+#. Text in echo
+#: nc-coming-soon-pages-free/framework/framework.php:937
+#: nc-coming-soon-pages-free/framework/framework.php:925
+msgid "Re-Install"
+msgstr ""
+
+#. Text in echo
+#: nc-coming-soon-pages-free/framework/framework.php:861
+msgid "Save Settings"
+msgstr ""
+
+#. Text in function
+#: nc-coming-soon-pages-free/framework/framework.php:955
+msgid "Settings Updated Successfully!"
+msgstr ""
+
+#. Text in echo
+#: nc-coming-soon-pages-free/framework/framework.php:937
+#: nc-coming-soon-pages-free/framework/framework.php:949
+msgid "Uninstall"
+msgstr ""
+
+#. Text in function
+#: nc-coming-soon-pages-free/framework/framework.php:955
+msgid "Uninstall complete, You can de-activate this product now."
+msgstr ""
+
+#. Text in echo
+#: nc-coming-soon-pages-free/framework/framework.php:807
+msgid "Upload Image"
+msgstr ""
+

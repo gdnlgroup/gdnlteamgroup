@@ -1,0 +1,3 @@
+<?php
+	wp-login-form();
+?>

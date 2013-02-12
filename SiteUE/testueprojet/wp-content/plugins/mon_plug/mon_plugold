@@ -1,0 +1,199 @@
+<?php
+/*
+Plugin Name: plug_Bocoum
+Description: L'ensemble des fonctions globales du site.
+Version: 0.1
+License: GPL
+Author:Bocoum Adama
+Author URI: http://bocoum.fr/
+*/
+?>
+<?php
+remove_action("wp_head", "wp_generator");
+add_action('admin_init', 'init_wysiwyg');
+
+function init_wysiwyg()
+{
+wp_enqueue_script('editor');
+add_thickbox();
+wp_enqueue_script('media-upload');
+add_action('admin_print_footer_scripts', 'wp_tiny_mce', 25);
+wp_enqueue_script('quicktags');
+}
+
+
+
+add_action('right_now_content_table_end', 'En_attente');
+
+function En_attente() {
+		$types = 'post';
+
+        if (!post_type_exists(''.$types.'')) {
+             return;
+        }
+
+        $num_posts = wp_count_posts( ''.$types.'' );
+
+        $nbr_ = 'Post';
+	$nbr_s = 'Posts';
+
+        $num = number_format_i18n( $num_posts->publish );
+        $text = _n('' . $nbr_ . '', '' . $nbr_s . '', intval($num_posts->publish) );
+        if ( current_user_can( 'edit_posts' ) ) {
+            $num = "<a href='edit.php?post_type=$types'>$num</a>";
+            $text = "<a href='edit.php?post_type=$types'>$text</a>";
+        }
+        echo '<td class="first b">' . $num . '</td>';
+        echo '<td class="t">' . $text . '</td>';
+
+        echo '';
+
+        if ($num_posts->pending > 0) {
+            $num = number_format_i18n( $num_posts->pending );
+            $text = _n( 'En attente', 'En attentes', intval($num_posts->pending) );
+            if ( current_user_can( 'edit_posts' ) ) {
+                $num = "<a href='edit.php?post_status=pending&post_type=$types'>$num</a>";
+                $text = "<a class=\"waiting\" href='edit.php?post_status=pending&post_type=$types'>$text</a>";
+            }
+            echo '<td class="first b">' . $num . '</td>';
+            echo '<td class="t">' . $text . '</td>';
+
+            echo '';
+        }
+}
+
+function button_postuler(){?>
+	<div>
+	<?php
+	$definie=get_user_meta(get_current_user_id(), 'favoris', false);?>
+        <?php $postid=get_the_ID(); ?>
+        <?php if ( !empty($definie) && in_array($postid,$definie))  : ?>
+                 <h1>Choisi</h1>
+        <?php else : ?>
+            <form action="<?php echo bloginfo('url')?>/postuler" method="post">
+                <input type="hidden" value="<?php the_ID(); ?>" name="postid"/>
+                <input type="hidden" value="<?php echo $_SERVER['REQUEST_URI']; ?>" name="precedent"/>
+                <input type="submit" value="postuler"/>
+            </form>
+        <?php endif;?>
+	</div>
+	
+<?php }
+
+add_filter('the_content', 'postuler');
+
+function postuler($strContent) {
+  //Only show at a single post / page the extended (if configurated) view
+
+  if(is_single()) {
+    return $strContent.button_postuler();
+  } 
+}
+
+
+
+
+
+
+
+
+
+
+if ( ! function_exists( 'twentyeleven_posted_on' ) ) :
+/**
+ * Prints HTML with meta information for the current post-date/time and author.
+ * Create your own twentyeleven_posted_on to override in a child theme
+ *
+ * @since Twenty Eleven 1.0
+ */
+function twentyeleven_posted_on() {
+	printf( __( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'twentyeleven' ),
+		esc_url( get_permalink() ),
+		esc_attr( get_the_time() ),
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() ),
+		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+		esc_attr( sprintf( __( 'View all posts by %s', 'twentyeleven' ), get_the_author() ) ),
+		get_the_author()
+	);
+       echo'    <a href="mailto:'; the_author_email(); echo '"> Contacter </a>';
+}
+endif;
+
+function my_script_dumenu() {
+	wp_enqueue_script('wp_jsmenu', '/wp-content/plugins/mon_plug/javascript/functionsmenu.js');  
+}    
+ 
+add_action('wp_enqueue_scripts', 'my_script_dumenu');
+
+
+add_action( 'send_headers', 'site_router' );
+function site_router(){
+	$root=str_replace('index.php','', $_SERVER['SCRIPT_NAME']);
+	$url= str_replace($root,'',$_SERVER['REQUEST_URI']);
+	$url=explode('/',$url);
+	
+        if(count($url) == 1 && $url[0]=='login')
+	{
+	   // require 'tpl-login.php';
+	    include(ABSPATH.'wp-content/plugins/mon_plug/templates/tpl-login.php');
+
+	    die();
+	}else if(count($url) == 1 && $url[0]=='profil')
+	{
+	    //require 'tpl-profile.php';
+	    include(ABSPATH.'wp-content/plugins/mon_plug/templates/tpl-profile.php');
+
+	    die();
+	}else if(count($url) == 1 && $url[0]=='logout')
+	{
+	    wp_logout();
+            header('location:'.$root);
+	    die();
+	}else if(count($url) == 1 && $url[0]=='register')
+	{
+	    //require 'tpl-register.php';
+	    include(ABSPATH.'wp-content/plugins/mon_plug/templates/tpl-register.php');
+
+	    die();
+	}
+        
+        else if(count($url) == 1 && $url[0]=='editer'){
+		//require 'tpl-editer.php';
+		include(ABSPATH.'wp-content/plugins/mon_plug/templates/tpl-editer.php');
+	    die();
+        }
+	else if(count($url) == 1 && $url[0]=='proposer'){
+		//require 'tpl-editer.php';
+		include(ABSPATH.'wp-content/plugins/mon_plug/templates/tpl-edition_pending.php');
+	    die();
+        }
+         else if(count($url) == 1 && $url[0]=='inscrition_etudiant'){
+            //require'tpl-traitementinscript.php';
+	    include(ABSPATH.'wp-content/plugins/mon_plug/templates/tpl-traitementinscript.php');
+            die();
+         }
+          else if(count($url) == 1 && $url[0]=='postuler'){
+           // require'gestionpostulat.php';
+	    include(ABSPATH.'wp-content/plugins/mon_plug/templates/tpl-gestionpostulat.php');
+
+            die();
+         }
+          else if(count($url) == 1 && $url[0]=='lister'){
+          //  require'Listechoisi.php';
+	    include(ABSPATH.'wp-content/plugins/mon_plug/templates/tpl-listechoisi.php');
+            die();
+         } else if(count($url) == 1 && $url[0]=='attente'){
+		include(ABSPATH.'wp-content/plugins/mon_plug/templates/tpl-attente.php');
+		die();
+	 } else if(count($url) == 1 && $url[0]=='listerattente'){
+		include(ABSPATH.'wp-content/plugins/mon_plug/templates/tpl-sujet_attente.php');
+		die();
+	 }
+}
+
+add_filter('show_admin_bar', '__return_false');
+
+//require_once(ABSPATH.'wp-content/themes/twentyeleven/types/sujet.php');
+
+?>

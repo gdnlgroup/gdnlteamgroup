@@ -1,0 +1,205 @@
+/***************************************************************************
+ * @Author: NetChillies - PepUp The Web!
+ * @Website: http://www.netchillies.com/
+ * @Contact: http://www.netchillies.com/contact
+ * @Privacy Policy & Terms of Use: http://www.netchillies.com/terms
+ * @License Info: http://www.netchillies.com/license
+ ***************************************************************************/
+body{
+    background: #764b00 url(images/bg.png) repeat-x;
+    font-family: "Verdana", "arial", sans-serif;
+    font-size: 11pt;
+    color: #454545;
+    line-height: 1.5;
+}
+
+.module{
+    padding-bottom: 20px;
+}
+
+a{
+    color: #764b00;
+}
+
+/** LOGO **************************************************************/
+#logo{
+    width: 800px;
+    text-align: center;
+    margin: 60px auto 10px auto;
+}
+
+h1.logo{
+    font-family: "Georgia", "Trebuchet MS", sans-serif;
+    font-size: 40px;
+    color: #FFF;
+    text-shadow:0px 1px 1px #000;
+    margin: 0px;
+    padding-bottom: 5px;
+}
+.logo-sep{
+    height: 50px;
+}
+
+/** CONTENT PANEL *****************************************************/
+#content{
+    width: 760px;
+    background:#f9f9f9;
+    margin: 0px auto;
+    min-height: 250px;
+
+    box-shadow:inset 0 0 3px #FFF;
+    -moz-box-shadow:inset 0 0 3px #FFF;
+    -webkit-box-shadow:inset 0 0 3px #FFF;
+
+    text-shadow: 1px 1px 1px #ddd;
+
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    padding: 20px;
+
+    position: relative;
+
+}
+
+#shadow{
+    display: block;
+    position: absolute;
+    bottom: -18px;
+    left: 0px;
+    background: url('images/shadow.png') bottom no-repeat;
+    width: 800px;
+    height: 18px;
+}
+
+
+/** COUNTDOWN TIMER ***************************************************/
+
+#countdown-timer{
+    text-align: center;
+
+}
+
+#countdown-timer span.day,
+#countdown-timer span.hour,
+#countdown-timer span.min,
+#countdown-timer span.sec{
+    display: inline-block;
+    background: #f5f5f5;
+    width: 120px;
+    margin: 0 5px;
+    padding: 10px 0 20px 0;
+    font-size: 30pt;
+    border: 1px solid #ddd;
+
+
+    box-shadow: inset 0 0 5px #ddd;
+    -moz-box-shadow: inset 0 0 5px #ddd;
+    -webkit-box-shadow: inset 0 0 5px #ddd;
+
+    border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+}
+
+#countdown-timer span.timer-text{
+    display: block;
+    font-size: 11pt;
+}
+
+/** TWITTER FEED ******************************************************/
+
+#twitter-feed{
+    margin-top: 65px;
+    position: relative;
+}
+.twitter-icon-big{
+    position: absolute;
+    width: 80px;
+    height: 70px;
+    top: -58px;
+    width: 100%;
+    background: url(images/icon-twitter-big.png) top center no-repeat;
+}
+#tweets{
+    padding-top: 18px;
+    padding-bottom: 10px;
+    border-top: 1px dotted #ddd;
+    border-bottom: 1px dotted #ddd;
+    text-align: center;
+}
+
+#tweets ul li{
+    list-style: none;
+    margin: 0 40px;
+}
+.twitterTime{
+    display: block;
+    font-size: 10pt;
+    font-style: italic;
+    padding: 5px 0 0 0;
+}
+
+
+/** Email Subscription ************************************************/
+#email_subscription{
+    background: #764b00;
+    width:520px;
+    margin: 0 auto;
+    padding: 5px 8px 5px 8px;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    
+}
+#email_subscription_form input[type=text]{
+    background: #FFF;
+    float:left;
+    width: 380px;
+    border: 0px solid #FFF;
+    color: #454545;
+    font-family: "verdana", arial, sans-serif;
+    font-size: 12pt;
+    padding: 6px 6px;
+
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
+
+#email_subscription_form input[type=submit]{
+    float:right;
+    background: url(images/button-bg.png) bottom repeat-x;
+    border: 1px solid #FFF;
+    font-family: "verdana", arial, sans-serif;
+    font-size: 12pt;
+    color: #454545;
+    width: 110px;
+    padding: 5px 10px;
+    
+        border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
+
+#contact_social_media{
+    width: 700px;
+    margin: 30px auto 0 auto;
+}
+
+#contact-form{
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
+.icon-contact{
+    background: url(images/icon-contact.png) 0px 1px no-repeat;
+    padding-left: 23px;
+}
+
+#social-media{
+    float: left;
+    width: 50%;
+    text-align: right;
+}
